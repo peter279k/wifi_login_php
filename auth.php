@@ -19,8 +19,17 @@
 			if(stristr($value, "magic"))
 				$magic = trim(get_attribute($value, "value"));
 		}
-
-		$action = "http://10.1.230.254:1000/fgtauth?".$magic;
+		
+		$action = "";
+		$action_arr = array("library"=>"http://10.1.230.254:1000/fgtauth?".$magic, 
+			"engineering"=>"http://www.gstatic.com/generate_204");	
+		
+		foreach ($action_arr as $key => $value) 
+		{
+			$web_page = http_get($value, $refer = "");
+			if($web_page!="")
+				$action = $value;
+		}
 						
 		$method = "POST";
 		$ref = "";
