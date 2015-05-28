@@ -21,14 +21,18 @@
 		}
 		
 		$action = "";
+		$check_common = "";
 		$action_arr = array("library"=>"http://10.1.230.254:1000/fgtauth?".$magic, 
-			"engineering"=>"http://www.gstatic.com/generate_204");	
+			"engineering_teach"=>"http://www.gstatic.com/generate_204");
 		
 		foreach ($action_arr as $key => $value) 
 		{
 			$web_page = http_get($value, $refer = "");
 			if($web_page!="")
+			{
 				$action = $value;
+				$check_common = $key;
+			}
 		}
 						
 		$method = "POST";
@@ -41,6 +45,31 @@
 			$web_page = $web_page["FILE"];
 
 			if(stristr($web_page, "台東大學無線網路驗證系統"))
+			{
+				echo "auth_fail";
+			}
+			else
+				echo "auth_success";
+		}
+	}
+	else if(stristr($web_page, "台東大學"))
+	{
+		$action = "https://securelogin.arubanetworks.com/cgi-bin/login";
+		$data_arr = array();
+		$data_arr["user"] = "your-school-email";
+		$data_arr["password"] = "your-password";
+		$data_arr["authenticate"] = "authenticate";
+		$data_arr["accept_aup"] = "accept_aup";
+		$data_arr["requested_url"] = "";
+		$method = "POST";
+		$ref = "";
+		$response = http($target = $action, $ref , $method, $data_arr, EXCL_HEAD);
+		if($response["ERROR"]=="")
+		{
+			$web_page = http_get("http://google.com.tw", $refer = "");
+			$web_page = $web_page["FILE"];
+
+			if(stristr($web_page, "台東大學"))
 			{
 				echo "auth_fail";
 			}
