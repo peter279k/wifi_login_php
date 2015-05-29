@@ -52,8 +52,10 @@
 				echo "auth_success";
 		}
 	}
-	else if(stristr($web_page, "台東大學"))
+	else if(stristr($web_page, "USERNAME"))
 	{
+		echo "need_auth2\n";
+                echo "The program is authing, please wait...\n";
 		$action = "https://securelogin.arubanetworks.com/cgi-bin/login";
 		$data_arr = array();
 		$data_arr["user"] = "your-school-email";
@@ -69,7 +71,7 @@
 			$web_page = http_get("http://google.com.tw", $refer = "");
 			$web_page = $web_page["FILE"];
 
-			if(stristr($web_page, "台東大學"))
+			if(stristr($web_page, "USERNAME"))
 			{
 				echo "auth_fail";
 			}
