@@ -59,7 +59,7 @@
 		$action = "https://securelogin.arubanetworks.com/cgi-bin/login";
 		$data_arr = array();
 		$data_arr["user"] = "your-school-email";
-		$data_arr["password"] = "your-password";
+		$data_arr["password"] = "your-pwd";
 		$data_arr["authenticate"] = "authenticate";
 		$data_arr["accept_aup"] = "accept_aup";
 		$data_arr["requested_url"] = "";
