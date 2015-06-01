@@ -3,15 +3,20 @@
 	require_once("libs/LIB_parse.php");
 	$web_page = http_get("http://google.com.tw", $refer = "");
 	$web_page = $web_page["FILE"];
+	echo "Please input the email: ";
+	$handle = fopen("php://stdin", "r");
+	$email = trim(fgets($handle));
+	echo "\nPlease input the password: ";
+	$password = trim(fgets($handle));
 
 	if(stristr($web_page, "台東大學無線網路驗證系統"))
 	{
-		echo "need_auth\n";
+		echo "\nneed_auth\n";
 		echo "The program is authing, please wait...\n";
 		$data_arr = array();
 		//user input username and password
-		$data_arr["username"] = "your-school-email";
-		$data_arr["password"] = "your-pwd";
+		$data_arr["username"] = $email;
+		$data_arr["password"] = $password;
 		$data_arr["4Tredir"] = "http://google.com.tw";
 		$parse_arr = parse_array($web_page," <input ",">");
 		foreach ($parse_arr as $value) 
@@ -55,11 +60,11 @@
 	else if(stristr($web_page, "USERNAME"))
 	{
 		echo "need_auth2\n";
-                echo "The program is authing, please wait...\n";
+                	echo "The program is authing, please wait...\n";
 		$action = "https://securelogin.arubanetworks.com/cgi-bin/login";
 		$data_arr = array();
-		$data_arr["user"] = "your-school-email";
-		$data_arr["password"] = "your-pwd";
+		$data_arr["user"] = $email;
+		$data_arr["password"] = $password;
 		$data_arr["authenticate"] = "authenticate";
 		$data_arr["accept_aup"] = "accept_aup";
 		$data_arr["requested_url"] = "";
