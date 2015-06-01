@@ -4,7 +4,9 @@ This is a php program login NTTU wireless network for programmer.
 ####step1:  
 git clone https://github.com/peter279k/wifi_login_php.git
 ####step2: 
- edit auth.php then change your-school-email and your-pwd.
+You will see the message and input your email and password.
+##Attention!
+This program only runs in command line.It will not be compatible with web app.
 ###step3:  
 If you use Linux,you can open terminal.If you use Windows, you can open cmd.exe.
 ####step4:  
