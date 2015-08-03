@@ -8,7 +8,8 @@ If you use Linux,you can open terminal.If you use Windows, you can open cmd.exe.
 ####step3: 
 You will see the message and input your email and password.
 ####step4:  
-You need to have php runtime on windows platform and php5-cli package on Linux so that you can use following commands: 
+You need to have php runtime on windows platform and php5-cli package on Linux so that you can use following commands:
+
     php /your-path/auth/auth.php
 ####step5: 
 Done!!
