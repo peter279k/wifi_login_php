@@ -11,8 +11,8 @@
 		echo "Please select following ssid: \n";
 		echo "You have to make sure you select this ssid to login.\n";
 		echo "1. ntou( if you are in library)\n";
-		echo "2. TANetRoaming(ntou, if you are in library)\n";
-		echo "3. ap-nttu or CSE, CS AP-XXX...etc.(ntou)\n";
+		echo "2. TANetRoaming(ntou, if you are in library and you want to use TANetRoaming)\n";
+		echo "3. ap-nttu or CSE, CS AP-XXX...etc.(ntou), It's alos supported TANetRoaming\n";
 		$option = trim(fgets($handle));
 		if($option === "")
 		{
