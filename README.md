@@ -1,5 +1,5 @@
 # wifi_login_php
-This is a php program login NTTU wireless network for programmer.
+This is a php program login NTTU and some part of NTOU wireless network for programmer.
 #Usage
 ####step1:  
     git clone https://github.com/peter279k/wifi_login_php.git
