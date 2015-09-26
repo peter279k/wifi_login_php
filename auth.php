@@ -12,7 +12,7 @@
 		echo "You have to make sure you select this ssid to login.\n";
 		echo "1. ntou( if you are in library)\n";
 		echo "2. TANetRoaming(ntou, if you are in library and you want to use TANetRoaming)\n";
-		echo "3. ap-nttu or CSE, CS AP-XXX...etc.(ntou), It's alos supported TANetRoaming\n";
+		echo "3. ap-nttu or CSE, CS AP-XXX...etc.(ntou), It's also supported TANetRoaming\n";
 		$option = trim(fgets($handle));
 		if($option === "")
 		{
@@ -60,11 +60,13 @@
 	}
 	else if($option == 2)
 	{
-		echo auth_ntou("TANet", $email, $password);
+		echo "sorry,we have not already supported this access point.";
+		//echo auth_ntou("TANet", $email, $password);
 	}
 	else
 	{
-		echo auth_ntou("ntou", $email, $password);
+		echo "sorry,we have not already supported this access point.";
+		//echo auth_ntou("ntou", $email, $password);
 	}
 
 	function auth_ntou($str, $email, $password)
