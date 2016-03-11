@@ -10,9 +10,9 @@
 			break;
 		echo "Please select following ssid: \n";
 		echo "You have to make sure you select this ssid to login.\n";
-		echo "1. ntou( if you are in library)\n";
+		echo "1. ntou( if you are in library or use this access point)\n";
 		echo "2. TANetRoaming(ntou, if you are in library and you want to use TANetRoaming)\n";
-		echo "3. ap-nttu or CSE, CS AP-XXX...etc.(ntou), It's also supported TANetRoaming\n";
+		echo "3. ap-nttu or CSE, CS AP-XXX...etc.(ntou). It's also supported TANetRoaming\n";
 		$option = trim(fgets($handle));
 		if($option === "")
 		{
@@ -61,12 +61,12 @@
 	else if($option == 2)
 	{
 		echo "sorry,we have not already supported this access point.";
-		//echo auth_ntou("TANet", $email, $password);
+		echo auth_ntou("TANet", $email, $password);
 	}
 	else
 	{
 		echo "sorry,we have not already supported this access point.";
-		//echo auth_ntou("ntou", $email, $password);
+		echo auth_ntou("ntou", $email, $password);
 	}
 
 	function auth_ntou($str, $email, $password)
@@ -75,43 +75,42 @@
 		//$web_page = $web_page["FILE"];
 		//NTOU Libraries only supported this function
 
-		if($str === "TANet")
+		if($str === "TANet" || $str == "ntou")
 		{
-			//TANetRoaming
+			//TANetRoaming,ntou,ntou-guest and son.
 			echo "\nneed_auth\n";
 			echo "The program is authing, please wait...\n";
 			$data_arr = array();
 			$data_arr["username"] = $email;
 			$data_arr["password"] = $password;
-			$response = http($target = "https://140.121.40.253/user/user_login_auth.jsp", $ref = "", $method = "POST", $data_arr, EXCL_HEAD);
+			$data_arr["ok"] = "登入";
+			/*
+			URL ruckus_url = new URL("https://140.121.40.253/user/user_login_auth.jsp?");
+                            	URL ruckus_url_2 = new URL("https://140.121.40.253/user/user_login_auth.jsp?");
+                            	URL ruckus_url_3 = new URL("https://140.121.40.253/user/_allowuser.jsp?");
+			*/
+			$response = http($target = "https://140.121.40.253/user/user_login_auth.jsp?", $ref = "", $method = "POST", $data_arr, EXCL_HEAD);
 			if($response["ERROR"]=="")
 			{
-				print_r($response);
-				echo "auth_success";
-				/*
-				$web_page = http_get("http://google.com.tw", $refer = "");
+				http_get("https://140.121.40.253/user/user_login_auth.jsp?", $ref = "");
+				http_get("https://140.121.40.253/user/_allowuser.jsp?", $ref = "");
+				$web_page = http_get("http://google.com.tw", $ref = "");
 				$web_page = $web_page["FILE"];
 
-				if(stristr($web_page, "Either your user name or password is incorrect. Please try again."))
+				print_r($web_page);
+				if(stristr($web_page, "Authentication Required for Wireless Access"))
 				{
 					print_r($response["ERROR"]);
 					echo "auth_fail";
 				}
 				else
 					echo "auth_success";
-				*/
 			}
 			else
 			{
 				echo "It's auth or you are not in this wireless access point.\n";
 			}
 		}
-		/*
-		else
-		{
-			//ntou
-		}
-		*/
 	}
 
 	function auth_nttu($email, $password)
