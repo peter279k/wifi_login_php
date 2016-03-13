@@ -1,4 +1,7 @@
 <?php
+	header_remove("X-Powered-By");
+	header("Content-type: none");
+	header_remove("Content-type");
 	require_once("libs/LIB_http.php");
 	require_once("libs/LIB_parse.php");
 
