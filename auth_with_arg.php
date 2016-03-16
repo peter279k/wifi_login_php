@@ -5,22 +5,17 @@
 	require_once("libs/LIB_http.php");
 	require_once("libs/LIB_parse.php");
 
-	$option = null;
-	$ssid = htmlentities(trim($argv[1]));
+	$option = htmlentities(trim($argv[1]));
 	$email = $argv[2];
 	$password = $argv[3];
 
 	//ssid: ap-nttu,CSE,ntou, and etc.
-	if($ssid === "ntou")
-		$option = 1;
-	else
-		$option = 3;
 
 	if($option == 3) {
 		echo auth_nttu($email, $password);
 	}
 	else if($option == 2) {
-		//not yet matbe ssid TANET-Roming(NTOU library)?
+		//not yet maybe ssid TANET-Roming(NTOU library)?
 	}
 	else {
 		echo auth_ntou("ntou", $email, $password);
