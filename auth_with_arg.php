@@ -5,26 +5,22 @@
 	require_once("libs/LIB_http.php");
 	require_once("libs/LIB_parse.php");
 
-	$option = htmlentities(trim($argv[1]));
-	$email = $argv[2];
-	$password = $argv[3];
+	$email = htmlentities($argv[1]);
+	$password = htmlentities($argv[2]);
+	
+	if($email == null || $password == null) {
+		echo "please input email or password";
+		exit;
+	}
+	
+	auth_nttu($email, $password);
 
-	//ssid: ap-nttu,CSE,ntou, and etc.
-
-	if($option == 3) {
-		echo auth_nttu($email, $password);
-	}
-	else if($option == 2) {
-		//not yet maybe ssid TANET-Roming(NTOU library)?
-	}
-	else {
-		echo auth_ntou("ntou", $email, $password);
-	}
+	//ssid: ap-nttu,CSE,ntou,nctu and etc.
 
 	function auth_ntou($str, $email, $password) {
 
 		if($str == "ntou") {
-			//TANetRoaming,ntou,ntou-guest and son.
+			//ntou(libraries)
 			$data_arr = array();
 			$data_arr["username"] = $email;
 			$data_arr["password"] = $password;
@@ -38,17 +34,18 @@
 				$web_page = http_get("http://google.com.tw", $ref = "");
 				$web_page = $web_page["FILE"];
 
-				print_r($web_page);
 				if(stristr($web_page, "Authentication Required for Wireless Access")) {
-					print_r($response["ERROR"]);
 					echo "auth_fail";
 				}
 				else
 					echo "auth_success";
 			}
 			else {
-				echo "It's auth or you are not in this wireless access point.\n";
+				echo "It's auth or you are not in this wireless access point.";
 			}
+		}
+		else {
+			//TANetRoaming,ntou-guest
 		}
 	}
 
@@ -119,7 +116,8 @@
 					echo "auth_success";
 			}
 		}
-		else
-			echo "It's auth or you are not in this wireless access point.\n";
+		else {
+			auth_ntou("ntou", $email, $password);
+		}
 	}
 ?>
