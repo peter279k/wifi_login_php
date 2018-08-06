@@ -1,17 +1,23 @@
 # wifi_login_php
 This is a php program login NTTU and some part of NTOU wireless network for programmer.
-#Usage
-####step1:  
+
+## Usage
+
+#### Step 1:  
     git clone https://github.com/peter279k/wifi_login_php.git
-###step2:  
+    
+#### Step 2:  
 If you use Linux,you can open terminal.If you use Windows, you can open cmd.exe.
-####step3: 
+
+#### Step 3: 
 You will see the message and input your email and password.
-####step4:  
+
+#### Step 4:
 You need to have php runtime on windows platform and php5-cli package on Linux so that you can use following commands:
 
     php /your-path/auth/auth.php
-####step5: 
+    
+#### Step 5: 
 Done!!
-##Attention!
-This program only runs in command line.It will not be compatible with web app.
+
+> Note: This program only runs in command line.It will not be compatible with web app.
