@@ -6,9 +6,7 @@ header("Content-type: none");
 
 header_remove("Content-type");
 
-require_once("libs/LIB_http.php");
-
-require_once("libs/LIB_parse.php");
+require_once __DIR__ . '/./vendor/autoload.php';
 
 $email = htmlentities($argv[1]);
 $password = htmlentities($argv[2]);

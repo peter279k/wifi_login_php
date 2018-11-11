@@ -1,7 +1,6 @@
 <?php
 
-require_once("libs/LIB_http.php");
-require_once("libs/LIB_parse.php");
+require_once __DIR__ . '/./vendor/autoload.php';
 
 $handle = fopen("php://stdin", "r");
 
@@ -148,8 +147,8 @@ function auth_nttu($email, $password)
         }
     } elseif (stristr($web_page, "USERNAME")) {
         echo "need_auth2\n";
-                    echo "The program is authing, please wait...\n";
-                    //It's avilable for this link. It's also supported TANetRoaming
+        echo "The program is authing, please wait...\n";
+        //It's avilable for this link. It's also supported TANetRoaming
         $action = "https://securelogin.arubanetworks.com/cgi-bin/login";
         $data_arr = array();
         $data_arr["user"] = $email;
