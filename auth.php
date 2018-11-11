@@ -19,7 +19,7 @@
 			$option = null;
 			echo "You have to select the option.\n";
 		}
-		else 
+		else
 		{
 			if((int)$option >= 4 || $option == 0)
 			{
@@ -128,18 +128,18 @@
 			$data_arr["password"] = $password;
 			$data_arr["4Tredir"] = "http://google.com.tw";
 			$parse_arr = parse_array($web_page," <input ",">");
-			foreach ($parse_arr as $value) 
+			foreach ($parse_arr as $value)
 			{
 				if(stristr($value, "magic"))
 					$magic = trim(get_attribute($value, "value"));
 			}
-		
+
 			$action = "";
 			$check_common = "";
-			$action_arr = array("library"=>"http://10.1.230.254:1000/fgtauth?".$magic, 
+			$action_arr = array("library"=>"http://10.1.230.254:1000/fgtauth?".$magic,
 				"engineering_teach"=>"http://www.gstatic.com/generate_204");
-		
-			foreach ($action_arr as $key => $value) 
+
+			foreach ($action_arr as $key => $value)
 			{
 				$web_page = http_get($value, $refer = "");
 				if($web_page!="")
@@ -148,7 +148,7 @@
 					$check_common = $key;
 				}
 			}
-						
+
 			$method = "POST";
 			$ref = "";
 			$data_arr["magic"] = $magic;
