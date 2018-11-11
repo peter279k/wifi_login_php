@@ -1,0 +1,25 @@
+{
+    "name": "lee/wifi_login_php",
+    "description": "It's the PHP script to authenticate specified WiFi hotpots",
+    "authors": [
+        {
+            "name": "peter279k",
+            "homepage": "https://github.com/peter279k"
+        }
+    ],
+    "type": "project",
+    "require": {
+        "php": "^7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.5"
+    },
+    "autoload": {
+        "files": [
+            "libs/LIB_http.php",
+            "libs/LIB_parse.php"
+        ]
+    },
+    "license": "MIT",
+    "minimum-stability": "stable"
+}
