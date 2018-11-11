@@ -5,7 +5,7 @@ Copyright 2007, Michael Schrenk
    This software is designed for use with the book,
    "Webbots, Spiders, and Screen Scarpers", Michael Schrenk, 2007 No Starch Press, San Francisco CA
 
-W3C® SOFTWARE NOTICE AND LICENSE
+W3Cï¿½ SOFTWARE NOTICE AND LICENSE
 
 This work (and included software, documentation such as READMEs, or other
 related items) is being provided by the copyright holders under the following license.
@@ -260,7 +260,7 @@ function http($target, $ref, $method, $data_array, $incl_head)
         }
         $query_string = join('&', $temp_string);
     }
-        
+
     # HEAD method configuration
     if ($method == HEAD) {
         curl_setopt($ch, CURLOPT_HEADER, true);                // No http head
@@ -285,7 +285,7 @@ function http($target, $ref, $method, $data_array, $incl_head)
         curl_setopt($ch, CURLOPT_HEADER, $incl_head);   // Include head as needed
         curl_setopt($ch, CURLOPT_NOBODY, false);        // Return body
     }
-        
+
     curl_setopt($ch, CURLOPT_COOKIEJAR, COOKIE_FILE);   // Cookie management.
     curl_setopt($ch, CURLOPT_COOKIEFILE, COOKIE_FILE);
     curl_setopt($ch, CURLOPT_TIMEOUT, CURL_TIMEOUT);    // Timeout
@@ -299,15 +299,15 @@ function http($target, $ref, $method, $data_array, $incl_head)
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);     // Follow redirects
     curl_setopt($ch, CURLOPT_MAXREDIRS, 4);             // Limit redirections to four
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);     // Return in string
-    
+
     # Create return array
     $return_array['FILE']   = curl_exec($ch);
     $return_array['STATUS'] = curl_getinfo($ch);
     $return_array['ERROR']  = curl_error($ch);
-    
+
     # Close PHP/CURL handle
     curl_close($ch);
-    
+
     # Return results
     return $return_array;
 }

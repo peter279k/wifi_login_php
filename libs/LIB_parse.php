@@ -5,7 +5,7 @@ Copyright 2007, Michael Schrenk
    This software is designed for use with the book,
    "Webbots, Spiders, and Screen Scarpers", Michael Schrenk, 2007 No Starch Press, San Francisco CA
 
-W3C® SOFTWARE NOTICE AND LICENSE
+W3Cï¿½ SOFTWARE NOTICE AND LICENSE
 
 This work (and included software, documentation such as READMEs, or other
 related items) is being provided by the copyright holders under the following license.
@@ -96,7 +96,7 @@ function split_string($string, $delineator, $desired, $type)
     # Case insensitive parse, convert string and delineator to lower case
     $lc_str = strtolower($string);
     $marker = strtolower($delineator);
-    
+
     # Return text BEFORE the delineator
     if ($desired == BEFORE) {
         if ($type == EXCL) {  // Return text ESCL of the delineator
@@ -104,7 +104,7 @@ function split_string($string, $delineator, $desired, $type)
         } else { // Return text INCL of the delineator
             $split_here = strpos($lc_str, $marker)+strlen($marker);
         }
-        
+
         $parsed_string = substr($string, 0, $split_here);
     } # Return text AFTER the delineator
     else {
@@ -113,7 +113,7 @@ function split_string($string, $delineator, $desired, $type)
         } else { // Return text INCL of the delineator
             $split_here = strpos($lc_str, $marker) ;
         }
-        
+
         $parsed_string =  substr($string, $split_here, strlen($string));
     }
     return $parsed_string;
@@ -173,11 +173,11 @@ function get_attribute($tag, $attribute)
 {
     # Use Tidy library to 'clean' input
     $cleaned_html = tidy_html($tag);
-    
+
     # Remove all line feeds from the string
     $cleaned_html = str_replace("\r", "", $cleaned_html);
     $cleaned_html = str_replace("\n", "", $cleaned_html);
-    
+
     # Use return_between() to find the properly quoted value for the attribute
     return return_between($cleaned_html, strtoupper($attribute)."=\"", "\"", EXCL);
 }
@@ -197,12 +197,12 @@ function remove($string, $open_tag, $close_tag)
 {
     # Get array of things that should be removed from the input string
     $remove_array = parse_array($string, $open_tag, $close_tag);
-    
+
     # Remove each occurrence of each array element from string;
     for ($xx=0; $xx<count($remove_array); $xx++) {
         $string = str_replace($remove_array, "", $string);
     }
-    
+
     return $string;
 }
 
