@@ -1,21 +1,26 @@
 <?php
-    header_remove("X-Powered-By");
-    header("Content-type: none");
-    header_remove("Content-type");
-    require_once("libs/LIB_http.php");
-    require_once("libs/LIB_parse.php");
 
-    $email = htmlentities($argv[1]);
-    $password = htmlentities($argv[2]);
-    
+header_remove("X-Powered-By");
+
+header("Content-type: none");
+
+header_remove("Content-type");
+
+require_once("libs/LIB_http.php");
+
+require_once("libs/LIB_parse.php");
+
+$email = htmlentities($argv[1]);
+$password = htmlentities($argv[2]);
+
 if ($email == null || $password == null) {
     echo "please input email or password";
     exit;
 }
-    
-    auth_nttu($email, $password);
 
-    //ssid: ap-nttu,CSE,ntou,nctu and etc.
+auth_nttu($email, $password);
+
+//ssid: ap-nttu,CSE,ntou,nctu and etc.
 
 function auth_ntou($str, $email, $password)
 {
@@ -26,9 +31,9 @@ function auth_ntou($str, $email, $password)
         $data_arr["username"] = $email;
         $data_arr["password"] = $password;
         $data_arr["ok"] = "登入";
-            
+
         $response = http($target = "https://140.121.40.253/user/user_login_auth.jsp?", $ref = "", $method = "POST", $data_arr, EXCL_HEAD);
-            
+
         if ($response["ERROR"]=="") {
             http_get("https://140.121.40.253/user/user_login_auth.jsp?", $ref = "");
             http_get("https://140.121.40.253/user/_allowuser.jsp?", $ref = "");
@@ -65,12 +70,12 @@ function auth_nttu($email, $password)
                 $magic = trim(get_attribute($value, "value"));
             }
         }
-        
+
         $action = "";
         $check_common = "";
         $action_arr = array("library"=>"http://10.1.230.254:1000/fgtauth?".$magic,
             "engineering_teach"=>"http://www.gstatic.com/generate_204");
-        
+
         foreach ($action_arr as $key => $value) {
             $web_page = http_get($value, $refer = "");
             if ($web_page!="") {

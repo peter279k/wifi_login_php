@@ -1,9 +1,12 @@
 <?php
-    require_once("libs/LIB_http.php");
-    require_once("libs/LIB_parse.php");
-    $handle = fopen("php://stdin", "r");
 
-    $option = null;
+require_once("libs/LIB_http.php");
+require_once("libs/LIB_parse.php");
+
+$handle = fopen("php://stdin", "r");
+
+$option = null;
+
 while (true) {
     if ($option !== null) {
         break;
@@ -25,8 +28,9 @@ while (true) {
     }
 }
 
-    $email = null;
-    $password = null;
+$email = null;
+$password = null;
+
 while (true) {
     if ($email !== null && $password !== null) {
         break;
@@ -72,8 +76,8 @@ function auth_ntou($str, $email, $password)
         $data_arr["ok"] = "登入";
         /*
             URL ruckus_url = new URL("https://140.121.40.253/user/user_login_auth.jsp?");
-                                URL ruckus_url_2 = new URL("https://140.121.40.253/user/user_login_auth.jsp?");
-                                URL ruckus_url_3 = new URL("https://140.121.40.253/user/_allowuser.jsp?");
+            URL ruckus_url_2 = new URL("https://140.121.40.253/user/user_login_auth.jsp?");
+            URL ruckus_url_3 = new URL("https://140.121.40.253/user/_allowuser.jsp?");
         */
         $response = http($target = "https://140.121.40.253/user/user_login_auth.jsp?", $ref = "", $method = "POST", $data_arr, EXCL_HEAD);
         if ($response["ERROR"]=="") {
