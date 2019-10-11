@@ -12,7 +12,7 @@ $email = htmlentities($argv[1]);
 $password = htmlentities($argv[2]);
 
 if ($email == null || $password == null) {
-    echo "please input email or password";
+    print "please input email or password";
     exit;
 }
 
@@ -39,12 +39,12 @@ function auth_ntou($str, $email, $password)
             $web_page = $web_page["FILE"];
 
             if (stristr($web_page, "Authentication Required for Wireless Access")) {
-                echo "auth_fail";
+                print "auth_fail";
             } else {
-                echo "auth_success";
+                print "auth_success";
             }
         } else {
-            echo "It's auth or you are not in this wireless access point.";
+            print "It's auth or you are not in this wireless access point.";
         }
     } else {
         //TANetRoaming,ntou-guest
@@ -91,9 +91,9 @@ function auth_nttu($email, $password)
             $web_page = $web_page["FILE"];
 
             if (stristr($web_page, "台東大學無線網路驗證系統")) {
-                echo "auth_fail";
+                print "auth_fail";
             } else {
-                echo "auth_success";
+                print "auth_success";
             }
         }
     } elseif (stristr($web_page, "USERNAME")) {
@@ -112,9 +112,9 @@ function auth_nttu($email, $password)
             $web_page = $web_page["FILE"];
 
             if (stristr($web_page, "USERNAME")) {
-                echo "auth_fail";
+                print "auth_fail";
             } else {
-                echo "auth_success";
+                print "auth_success";
             }
         }
     } else {
